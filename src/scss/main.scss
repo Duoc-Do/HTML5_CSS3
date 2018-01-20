@@ -1,0 +1,371 @@
+/*
+    Author : dothanhduoc.com
+    Author Email   : thanhduoccntt2004@gmail.com
+    Project Name   :  CSS3 project
+    *****************************************
+*/
+
+@import "variables";
+@import "common";
+@import "header";
+@import "footer";
+
+
+/* for pattern */
+
+#bg-pattern {
+    width: 100%;
+    float: left;
+    div {
+        width: 48%;
+        margin: 1%;
+        float: left;
+        height: 150px;
+        &.pattern01 {
+            background-color: $white;
+            background-image: repeating-linear-gradient(-45deg, transparent, rgba(54, 18, 68, 0) 50%, #F0ECDB 50%, #84763C);
+            background-size: 40px 10px;
+            &:hover {
+                background-size: 40px 20px;
+            }
+        }
+        &.pattern02 {
+            background-color: #161616;
+            background-image: repeating-linear-gradient(135deg, #333, #333 25%, transparent 25%, transparent 50%);
+            &:hover {
+                background-size: 20px 20px;
+            }
+        }
+        &.pattern03 {
+            background-color: $c_blue;
+            ;
+            background-image: repeating-radial-gradient(circle, #34495e, #34495e 45%, transparent 45%, transparent 60%, #34495e 60%, #34495e 100%);
+            &:hover {
+                background-size: 10px 10px;
+            }
+        }
+        &.pattern04 {
+            background-color: #e4d4bb;
+            background-image: repeating-radial-gradient(circle, #e4d4bb, #e7dac6 50%, #e7dac6 100%);
+            background-size: 10px 10px;
+            &:hover {
+                background-color: #eee8d0;
+                background-image: repeating-linear-gradient(-45deg, transparent, transparent 50%, #f0ecd8 50%, #f0ecd8);
+                background-size: 20px 20px;
+            }
+        }
+        &.pattern05 {
+            @extend .pattern02; // background-color: #161616;
+            background-image: repeating-linear-gradient(135deg, #333, #333 10%, transparent 10%, transparent 50%), repeating-linear-gradient(-135deg, #333, #333 10%, transparent 10%, transparent 50%);
+            &:hover {
+                background-size: 12px 12px;
+            }
+        }
+    }
+}
+
+// for business card
+.ddo-card {
+    margin: 4rem;
+    #flip {
+        display: none;
+        &:not(:checked)+label>.card {
+            transform: rotateY(0deg);
+            transition: transform 0.25s;
+        }
+        &:checked+label>.card {
+            transform: rotateY(180deg);
+            transition: transform 0.25s;
+        }
+    }
+    .card {
+        padding: 0;
+        display: block;
+        width: 32rem;
+        height: 20rem;
+        margin: 0 auto;
+        transform-style: preserve-3d;
+        .front,
+        .back {
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-shadow: rgba(0, 0, 0, 0.2) 0 0 3rem 0, rgba(0, 0, 0, 0.1) 0 0 1rem 0;
+        }
+        .front {
+            transform: translateZ(2px);
+            background: #2d5077;
+            border-radius: 2rem 0;
+            color: #cddbea;
+            &:after {
+                content: 'CLICK TO FLIP';
+                background: $c_light_grey2;
+                color: $c_dark_blue;
+                white-space: nowrap;
+                position: absolute;
+                top: 6rem;
+                bottom: 6rem;
+                left: 0;
+                right: 0;
+                text-align: center;
+                font-size: 2rem;
+                font-weight: 800;
+                line-height: 80px;
+                cursor: pointer;
+                visibility: hidden;
+                opacity: 0;
+                z-index: 9;
+                transition: opacity 0.35s;
+            }
+            &:hover {
+                &::after {
+                    visibility: visible;
+                    opacity: 1;
+                    transition: opacity 0.35s;
+                }
+            }
+            .short-name {
+                position: absolute;
+                left: -2.7rem;
+                top: -1rem;
+                font-weight: 800;
+                font-style: italic;
+                font-size: 30rem;
+                line-height: 20rem;
+                letter-spacing: -0.09em;
+                color: rgba(255, 255, 255, 0.04);
+            }
+            .name {
+                position: absolute;
+                top: 6.5rem;
+                left: 0;
+                z-index: 1;
+                right: 0;
+                text-align: center;
+                font-size: 3rem;
+                font-weight: 300;
+                span {
+                    font-weight: 800;
+                }
+            }
+            .profession {
+                position: absolute;
+                top: 10.5rem;
+                left: 0;
+                right: 0;
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: 300;
+                z-index: 1;
+            }
+            .left-side {
+                @extend %extend_4;
+                left: 4.5rem;
+            }
+            .right-side {
+                @extend %extend_4;
+                right: 4.5rem;
+            }
+            .strip {
+                position: absolute;
+                top: 6rem;
+                bottom: 6rem;
+                left: 0;
+                z-index: 0;
+                right: 0;
+                background-color: $c_dark_blue;
+            }
+        }
+        .back {
+            border-radius: 0 2rem;
+            transform: translateZ(-2px) rotateY(180deg);
+            background-color: $white;
+            border: 1px solid $c_dark_blue;
+            padding-top: 1.7rem;
+            .left-back {
+                background: $c_dark_blue;
+                position: absolute;
+                top: 0;
+                left: -1rem;
+                bottom: 0;
+                width: 9.5rem;
+            }
+            .fa-ul {
+                position: relative;
+                margin-left: 3.5rem;
+                text-align: left;
+                font-size: 1.65rem;
+                font-weight: 700;
+                font-size: 1.65rem;
+                line-height: 1.85em;
+                z-index: 1;
+                li {
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0;
+                        bottom: 0;
+                        background: $c_dark_blue;
+                        z-index: -1;
+                        transition: width 0.35s;
+                    }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        right: 23.35rem;
+                        width: 0;
+                        background: $c_light-blue;
+                        z-index: -1;
+                        transition: width 0.35s;
+                    }
+                    &:hover {
+                        a {
+                            color: $white;
+                            .fa {
+                                color: $c_dark_blue;
+                                top: 0.23em;
+                                transition: color 0.35s;
+                            }
+                        }
+                        &::before {
+                            width: 30rem;
+                            transition: width 0.35s;
+                        }
+                        &::after {
+                            width: 9rem;
+                            transition: width 0.35s;
+                        }
+                    }
+                    a {
+                        color: $c_dark_blue;
+                        transition: color 0.35s;
+                        font-size: 22px;
+                        margin-left: 4em;
+                        .fa {
+                            width: 2em;
+                            text-align: center;
+                            margin-left: 1.5em;
+                            color: $c_light-blue;
+                            top: 0.23em;
+                            transition: color 0.35s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// gallery
+.ddo-gallery {
+    .item {
+        display: inline-block;
+        filter: grayscale(100%);
+        width: 30%;
+        margin: 2rem 1% 0;
+        @include tablet {
+            width: 46%;
+        }
+        @include mobile {
+            width: 96%;
+        }
+        .frame-item {
+            background: #fff;
+            padding: 1rem 1rem 2rem;
+            box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+            .caption {
+                font-size: 1.125rem;
+                text-align: center;
+                line-height: 2em;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                z-index: -1;
+                transition: all 0.35s;
+            }
+        }
+        &:nth-of-type(4n+1) {
+            transform: scale(0.8, 0.8) rotate(5deg);
+            transition: all 0.35s;
+            .frame-item:before {
+                transform: rotate(6deg);
+                height: 20%;
+                width: 47%;
+                bottom: 30px;
+                right: 12px;
+                box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+            }
+        }
+        &:nth-of-type(4n+2) {
+            transform: scale(0.8, 0.8) rotate(-5deg);
+            transition: all 0.35s;
+            .frame-item:before {
+                transform: rotate(-6deg);
+                height: 20%;
+                width: 47%;
+                bottom: 30px;
+                left: 12px;
+                box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.4);
+            }
+        }
+        &:nth-of-type(4n+3) {
+            transform: scale(0.7, 0.7) rotate(3deg);
+            transition: all 0.35s;
+            .frame-item:before {
+                transform: rotate(-4deg);
+                bottom: 30px;
+                left: 12px;
+                box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.3);
+            }
+        }
+        &:nth-of-type(4n+4) {
+            transform: scale(0.9, 0.9) rotate(3deg);
+            transition: all 0.35s;
+            .frame-item:before {
+                transform: rotate(4deg);
+                bottom: 30px;
+                left: 12px;
+                box-shadow: 0 2.1rem 2rem rgba(0, 0, 0, 0.3);
+            }
+        }
+        &:hover {
+            filter: none;
+            transform: scale(1, 1) rotate(0deg)!important;
+            transition: all 0.35s;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+h2 {
+    border: 5px dotted $c_blue;
+    ;
+    padding: 5px;
+    &::first-letter {
+        color: $c_blue;
+        ;
+        font-size: 2em;
+    } //     .ani-text {
+    //     animation: spinText 5s linear infinite alternate;
+    //     color: $c_blue;;
+    //     font-size: 42px;
+    //     float: left;
+    // }
+}
+
+// .ddo-easing,
+// .ddo-gallery {
+//     width: 100%;
+//     display: block;
+//     float: left;
+// }

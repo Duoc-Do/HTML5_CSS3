@@ -1,0 +1,126 @@
+//colors
+$white: #ffffff;
+$color_tundora_approx: #454545;
+$color_mountain_mist_approx: #969595;
+$color_black_haze_approx: #f7f5f5;
+$color_gravel_approx: #4b4848;
+$white_70: rgba(255, 255, 255, .7);
+$c_blue: #009ff3; //#3498DB;
+$c_dark_blue: #00679e;
+$c_light-blue: #70c9f9;
+$c_orange: #ffba00;
+$c_grey:#eeeeee;
+$c-red:#ff3900;
+$c_light_grey:#aaa;
+$c_light_grey2:#f1f1f1;
+//fonts
+$font_0: raleway-regular;
+$font_1: raleway-bold;
+$font_2: raleway-semibold;
+$font_3: arial;
+
+//urls
+$url_0: url(../fonts/raleway-regular.eot);
+$url_1: url(../fonts/raleway-regular.eot?#iefix);
+$url_2: url(../fonts/raleway-regular.woff);
+$url_3: url(../fonts/raleway-regular.ttf);
+$url_4: url(../fonts/raleway-regular.svg#ralewayregular);
+$url_5: url(../fonts/raleway-bold.eot);
+$url_6: url(../fonts/raleway-bold.eot?#iefix);
+$url_7: url(../fonts/raleway-bold.woff);
+$url_8: url(../fonts/raleway-bold.ttf);
+$url_9: url(../fonts/raleway-bold.svg#ralewaybold);
+$url_10: url(../fonts/raleway-semibold.eot);
+$url_11: url(../fonts/raleway-semibold.eot?#iefix);
+$url_12: url(../fonts/raleway-semibold.woff);
+$url_13: url(../fonts/raleway-semibold.ttf);
+$url_14: url(../fonts/raleway-semibold.svg#ralewaysemibold);
+$url_15: url(../img/sm.png);
+$url_16: url(../img/sm_hover.png);
+$url_17: url(../img/men_icons.png);
+$url_18: url(../img/tech.jpg);
+$url_19: url(../img/p_navigation.png);
+$bg_runner: url(../img/WalkingManSpriteSheet.png); //@extend-elements
+//original selectors
+//h1, h2, h3, h4, h5, h6
+%extend_1 {
+    color: $color_gravel_approx;
+    font-family: $font_0, $font_3;
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+
+//original selectors
+//#menu_icon, .close_menu
+%extend_2 {
+    float: right;
+    margin-right: 40px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: $url_17 no-repeat;
+}
+
+//original selectors
+//.content h1, .content h2, .content h3, .content h4, .content h5, .content h6
+%extend_3 {
+    color: $color_gravel_approx;
+    font-family: $font_2, $font_3;
+    font-weight: bold;
+    line-height: 28px;
+    margin-bottom: 30px;
+}
+
+// for side: left and right
+%extend_4 {
+    position: absolute;
+    top: 7rem;
+    bottom: 7rem;
+    width: 0.1rem;
+    background-color: #3a5c81;
+}
+
+@font-face {
+    font-family: $font_0;
+    src: $url_0;
+    src: $url_1 format('embedded-opentype'), $url_2 format('woff'), $url_3 format('truetype'), $url_4 format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $font_1;
+    src: $url_5;
+    src: $url_6 format('embedded-opentype'), $url_7 format('woff'), $url_8 format('truetype'), $url_9 format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $font_2;
+    src: $url_10;
+    src: $url_11 format('embedded-opentype'), $url_12 format('woff'), $url_13 format('truetype'), $url_14 format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$mobile-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width:#{$desktop-width}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media(min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+        @content;
+    }
+}

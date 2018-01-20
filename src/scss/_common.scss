@@ -1,0 +1,448 @@
+/* -------------------->>> COMMON <<<-------------------- */
+
+html {
+    box-sizing: border-box;
+    color: black;
+    line-height: 1.5;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+
+img {
+    vertical-align: top;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+
+    &:hover {}
+}
+
+.wrapper {
+    width: 92.72727272727273%;
+    margin: 0 auto;
+}
+
+header {
+    ul.social li a {
+        transition: all .1s linear;
+    }
+    nav ul li a {
+        transition: all .1s linear;
+    }
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    padding-left: 250px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 55;
+    background: $color_black_haze_approx;
+    clear: both;
+    .work a .caption {
+        transition: all .1s linear;
+    }
+}
+
+h1 {
+    @extend %extend_1;
+    font-size: 2em;
+    margin: .67em 0;
+}
+
+h2 {
+    @extend %extend_1;
+    font-size: 1.5em;
+    margin: .75em 0;
+}
+
+h3 {
+    @extend %extend_1;
+    font-size: 1.17em;
+    margin: .83em 0;
+}
+
+h4 {
+    @extend %extend_1;
+}
+
+h5 {
+    @extend %extend_1;
+    font-size: .83em;
+    margin: 1.5em 0;
+}
+
+h6 {
+    @extend %extend_1;
+    font-size: .75em;
+    margin: 1.67em 0;
+}
+
+.clearfix {
+    *zoom: 1;
+    &:before {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+@media(min-width:1099px) {
+    header {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        min-height: 100%;
+        padding: 0 0 0 50px;
+        background: $white;
+        float: left;
+        overflow: hidden;
+        z-index: 9999;
+        .logo {
+            margin-top: 100px;
+            a {
+                color: $c_blue;
+                ;
+            }
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+        }
+        .rights {
+            p {
+                color: $color_tundora_approx;
+                font-family: $font_0, $font_3;
+                font-size: 11px;
+                letter-spacing: 1px;
+                line-height: 18px;
+            }
+            a {
+                font-family: $font_1, $font_3;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+        nav ul {
+            display: block;
+            overflow: hidden;
+            margin-top: 100px;
+            list-style: none;
+            li {
+                display: block;
+                margin-bottom: 30px;
+                a {
+                    color: $color_tundora_approx;
+                    font-family: $font_0, $font_3;
+                    font-size: 14px;
+                    text-decoration: none;
+                    letter-spacing: 1px;
+                    &:hover {
+                        color: $color_mountain_mist_approx;
+                    }
+                    &.selected {
+                        color: $color_mountain_mist_approx;
+                    }
+                }
+            }
+        }
+        ul.social {
+            list-style: none;
+            margin-bottom: 5px;
+            li {
+                display: block;
+                float: left;
+                position: relative;
+                margin: 0 15px 15px 0;
+                a {
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    background: $url_15 no-repeat;
+                    background-position: 0 0;
+                    &:hover {
+                        background: $url_16 no-repeat;
+                    }
+                    &.fb {
+                        background-position: 0 0;
+                        &:hover {
+                            background-position: 0 0;
+                        }
+                    }
+                    &.google {
+                        background-position: -31px 0;
+                        &:hover {
+                            background-position: -31px 0;
+                        }
+                    }
+                    &.behance {
+                        background-position: -62px 0;
+                        &:hover {
+                            background-position: -62px 0;
+                        }
+                    }
+                    &.twitter {
+                        background-position: -93px 0;
+                        &:hover {
+                            background-position: -93px 0;
+                        }
+                    }
+                    &.dribble {
+                        background-position: -124px 0;
+                        &:hover {
+                            background-position: -124px 0;
+                        }
+                    }
+                    &.rss {
+                        background-position: -155px 0;
+                        &:hover {
+                            background-position: -155px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #menu_icon {
+        display: none;
+    }
+    .close_menu {
+        display: none;
+    }
+}
+
+#menu_icon {
+    @extend %extend_2;
+    background-position: 0 0;
+}
+
+.close_menu {
+    @extend %extend_2;
+    background-position: -41px 0!important;
+}
+
+.top {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    background: $url_18 no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    .title {
+        display: block;
+        width: 100%;
+        color: $color_gravel_approx;
+        font-family: $font_1, $font_3;
+        font-size: 26px;
+        font-weight: bold;
+        background: $white_70;
+        padding: 20px;
+        text-transform: uppercase;
+        line-height: 30px;
+        margin: 0!important;
+        overflow: hidden; //Instead of the line below you could use @include box-sizing($bs)
+        box-sizing: border-box;
+    }
+}
+
+.work_nav {
+    display: block;
+    width: 100%;
+    .btn {
+        float: right;
+    }
+    ul {
+        list-style: none;
+        li {
+            display: block;
+            float: left;
+            margin: 0 0 1px 1px;
+            position: relative;
+        }
+    }
+    a {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: $url_19 no-repeat;
+        background-position: 0 0;
+        &.previous {
+            background-position: 0 0;
+        }
+        &.grid {
+            background-position: -41px 0;
+        }
+        &.next {
+            background-position: -82px 0;
+        }
+    }
+}
+
+.content_header {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    left: 50%;
+    margin-left: -46.36363636363637%;
+}
+
+.content {
+    color: $color_gravel_approx;
+    font-family: $font_0, $font_3;
+    font-size: 15px;
+    line-height: 22px;
+    padding: 60px 30px;
+    background: $white; //Instead of the line below you could use @include box-sizing($bs)
+    box-sizing: border-box;
+    p {
+        color: $color_gravel_approx;
+        font-family: $font_0, $font_3;
+        font-size: 15px;
+        line-height: 24px;
+        margin-bottom: 60px;
+    }
+    h1 {
+        @extend %extend_3;
+    }
+    h2 {
+        @extend %extend_3;
+    }
+    h3 {
+        @extend %extend_3;
+    }
+    h4 {
+        @extend %extend_3;
+    }
+    h5 {
+        @extend %extend_3;
+    }
+    h6 {
+        @extend %extend_3;
+    }
+}
+
+.tooltip {
+    display: block;
+    padding: 7px 10px;
+    background: $color_tundora_approx;
+    color: $white;
+    font-family: $font_0, $font_3;
+    font-size: 12px;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 999;
+    opacity: 0;
+    text-align: center;
+    letter-spacing: .5px;
+    &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 3px 3px 0 3px;
+        border-color: $color_tundora_approx transparent transparent transparent;
+        display: block;
+        text-align: center;
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        margin-left: -3px;
+    }
+}
+
+@media(max-width:1099px) {
+    header {
+        display: block;
+        width: 100%;
+        min-height: 100px;
+        padding: 0;
+        position: relative;
+        .logo {
+            margin: 8px 0 0 30px;
+            float: left;
+            a {
+                color: $c_blue;
+                ;
+            }
+        }
+        .footer {
+            display: none;
+        }
+        #menu_icon {
+            float: right;
+            margin: 30px 30px 0 0;
+        }
+        .close_menu {
+            float: right;
+            margin: 30px 30px 0 0;
+        }
+        nav {
+            width: 100%;
+            position: absolute;
+            top: 100px;
+            left: 0;
+            z-index: 9999;
+            ul {
+                list-style: none;
+                display: none;
+                position: relative;
+                margin-top: 0px;
+                padding: 0px;
+                li a {
+                    display: block;
+                    width: 100%;
+                    padding: 30px 0;
+                    text-align: center;
+                    color: $color_tundora_approx;
+                    font-family: $font_0, $font_3;
+                    font-size: 14px;
+                    text-decoration: none;
+                    border-top: 1px solid $color_black_haze_approx;
+                    background: $white;
+                    &:active {
+                        background: $color_black_haze_approx;
+                    }
+                }
+            }
+        }
+    }
+    #menu_icon {
+        display: block;
+    }
+    .close_menu {
+        display: block;
+    }
+    .show_menu {
+        display: block;
+        display: block;
+    }
+    .main {
+        width: 100%;
+        position: relative;
+        padding-left: 0;
+        .work {
+            width: 50%;
+        }
+    }
+}
+
+@media(max-width:550px) {
+    .main .work {
+        width: 100%;
+    }
+}

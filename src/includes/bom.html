@@ -1,0 +1,102 @@
+<p id="demo"></p>
+<button id="btnAssign" onclick="newAssign();">Assign to other website</button>
+<button onclick="goBack();">Go Back</button>
+<button onclick="goForward();">Go Forward</button>
+<button onclick="setTimeout(ddoTimeOut,3000);">SetTimeout</button>
+<p id="demo2"></p>
+<p id="txtnote"></p>
+<p id="mytimer"></p>
+<script>
+var x = document.getElementById("demo");
+x.innerHTML = "Browser inner window width: " + w + ", height: " + h + ".";
+
+var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+var x = document.getElementById("demo");
+x.innerHTML = "Browser inner window width: " + w + ", height: " + h + "." +
+    "<br>" + "Screen width: " + screen.width +
+    "<br>" + "Screen height: " + screen.height +
+    "<br>" + "Screen availHeight: " + screen.availHeight +
+    "<br>" + "Screen colorDepth: " + screen.colorDepth +
+    "<br>" + "Screen pixelDepth: " + screen.pixelDepth +
+    "<br>" + "The full URL of this page is: " + window.location.href +
+    "<br>" + "Page hostname is " + window.location.hostname +
+    "<br>" + "Page path is: " + window.location.pathname +
+    "<br>" + "Port name is: " + window.location.port;
+var y = document.getElementById('demo2');
+y.innerHTML = "Browser Application - navigator.appName is: " + navigator.appName +
+    "<br>" + "Browser Application - navigator.appCodeName is: " + navigator.appCodeName +
+    "<br>" + "Browser Engine - navigator.product is: " + navigator.product +
+    "<br>" + "Browser Version - navigator.appVersion is: " + navigator.appVersion +
+    "<br>" + "Browser Agent - navigator.userAgent is: " + navigator.userAgent +
+    // "<br>" + "Browser Application - navigator.cookieEnabled is: " + navigator.cookieEnabled+
+    "<br>" + "Browser Platform - navigator.platform is: " + navigator.platform +
+    "<br>" + "Browser Language - navigator.language is: " + navigator.language +
+    "<br>" + "Browser Online - navigator.onLine is: " + navigator.onLine +
+    "<br>" + "Browser Java Enabled - navigator.javaEnabled is: " + navigator.javaEnabled();
+
+function newAssign() {
+    // body...
+    window.location.assign("http://www.gbitdesign.com");
+};
+
+function goBack() {
+    window.history.back();
+};
+
+function goForward() { window.history.forward(); };
+
+function ddoTimeOut() {
+    var txt;
+    // alert("Hello!!!!! \nTime Out!!! '^o^'");
+    if (confirm("Hello!!!!! \nTime Out!!! '^o^'") == true) {
+        txt = "You agreed OK!";
+    } else {
+        txt = "You pressed Cancel!";
+    }
+    document.getElementById('txtnote').innerHTML = txt;
+
+}
+var t = setInterval(myTimer, 1000);
+
+function myTimer() {
+    var d = new Date();
+    document.getElementById('mytimer').innerHTML = d.toLocaleTimeString();
+}
+// var ck = document.cookie = "username=Duoc Do; expires=Thu,18 Aug 2017 12:08:00 UTC; path=/"; // var k = document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // console.log(k); // console.log(ck);
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 30);
+        }
+    }
+}
+</script>

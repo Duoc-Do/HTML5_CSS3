@@ -1,0 +1,910 @@
+@import "variables";
+#bg-content {
+    width: 100%;
+    float: left;
+}
+
+.view {
+    width: 300px;
+    margin: 10px;
+    float: left;
+    border: 10px solid #fff;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    box-shadow: 1px 1px 2px #e6e6e6;
+    cursor: default;
+    background: #fff url("../img/bgimg.jpg") no-repeat center center;
+    .mask {
+        width: 300px;
+        height: 200px;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+    }
+    .content {
+        @extend .mask;
+    }
+    img {
+        display: block;
+        position: relative;
+    }
+    h3 {
+        text-transform: uppercase;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        font-size: 17px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        margin: 20px 0 0 0
+    }
+    p {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 12px;
+        position: relative;
+        color: #fff;
+        padding: 10px 20px 10px;
+        text-align: center
+    }
+    a.info {
+        display: inline-block;
+        text-decoration: none;
+        padding: 7px 14px;
+        background: #000;
+        color: #fff;
+        text-transform: uppercase;
+        box-shadow: 0 0 1px #000 &hover {
+            box-shadow: 0 0 5px #000
+        }
+    }
+    &.view-first {
+        img {
+            transition: all 0.2s linear;
+        }
+        .mask {
+            opacity: 0;
+            background-color: rgba(219, 127, 8, 0.7);
+            transition: all 0.4s ease-in-out;
+        }
+        h2 {
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: all 0.2s ease-in-out;
+        }
+        p {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.2s linear;
+        }
+        a.info {
+            opacity: 0;
+            transition: all 0.2s ease-in-out;
+        }
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+            .mask {
+                opacity: 1;
+            }
+            h2,
+            p,
+            a.info {
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// Loading 2 
+div#loading2 {
+    width: 100%;
+    height: 2px;
+    background-color: green;
+    animation: mymove 4s;
+    position: relative;
+    span {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background-color: #ff9;
+        animation: linemove 1s infinite;
+        animation-delay: 4s;
+        animation-direction: alternate;
+        animation-fill-mode: forward;
+        left: 0;
+        top: -10px;
+        border-radius: 50%;
+        opacity: 0;
+    }
+}
+
+@keyframes linemove {
+    0% {
+        opacity: 1;
+    }
+
+    99% {
+        left: 100%;
+        background-color: #f90;
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        background-color: #036;
+    }
+}
+
+
+@keyframes mymove {
+    0% {
+        width: 0%;
+        background-color: blue;
+        height: 2px;
+    }
+
+    50% {
+        width: 50%;
+        background-color: yellow;
+        height: 2px;
+    }
+
+    80% {
+        width: 100%;
+        height: 2px;
+        background-color: red;
+    }
+
+    100% {
+        width: 100%;
+        height: 2px;
+    }
+}
+
+// End loadding 2
+// Using Easing
+.demo {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: $c_blue;
+    ;
+    animation-name: anieffect;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes anieffect {
+    from {
+        margin-left: 0;
+    }
+    to {
+        margin-left: 98%;
+    }
+}
+
+.linear {
+    animation-timing-function: linear;
+}
+
+.ease-in {
+    animation-timing-function: ease-in;
+}
+
+.ease-out {
+    animation-timing-function: ease-out;
+}
+
+.ease-in-out {
+    animation-timing-function: ease-in-out;
+}
+
+.cubizer {
+    animation-timing-function: cubic-bezier(.01, 1, .99, 0);
+}
+
+.steps {
+    animation-timing-function: steps(5);
+}
+
+// End Using Easing
+// Multiple Trasitions, Multiple Animations
+.demo-input {
+    background: $c_grey;
+    border: 4px solid #aaa;
+    font-size: 2rem;
+    padding: 1rem;
+    transition: background .4s,
+    border .2s, transform .4s cubic-bezier(.85, -.4, .29, .44);
+    &:focus {
+        background-color: #fff;
+        border: 4px solid #3991ae;
+        transform: scale(1.3);
+    }
+}
+
+.multipleanimations {
+    background: $c_blue;
+    ;
+    color: #fff;
+    font-size: 3rem;
+    padding: 1rem 2rem;
+    margin: 60px 0;
+    text-align: center;
+    width: 400px;
+    animation: setupAnimation 2s ease-out, danceAnimation 1s 2s cubic-bezier(0, .8, .5, 1.5) infinite;
+}
+
+@keyframes setupAnimation {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opcacity: 1;
+        transform: none;
+    }
+    100% {
+        opacity: 1;
+        transform: rotateZ(10deg);
+    }
+}
+
+@keyframes danceAnimation {
+    0% {
+        transform: rotateZ(10deg);
+    }
+    50% {
+        transform: rotateZ(-10deg);
+    }
+    100% {
+        transform: rotateZ(10deg);
+    }
+}
+
+// End Multiple Trasitions
+// scrollEvents
+.spacer {
+    background: #036;
+    border-radius: 1rem;
+    color: #fff;
+    font-size: 4rem;
+    height: 80vh;
+    line-height: 80vh;
+    margin: 4rem 0;
+    width: 100%;
+}
+
+.scrollevents {
+    button {
+        border-radius: 1rem;
+        border: 1px solid #fff;
+        color: #fff;
+        background: #3991ae;
+        font-size: 4rem;
+        padding: 2rem;
+    }
+}
+
+
+.animated {
+    animation: dancescroll 1s cubic-bezier(0, .8, 0, 1.5) infinite;
+}
+
+@keyframes dancescroll {
+    0%,
+    10% {
+        transform: none;
+    }
+    25% {
+        transform: rotateZ(-20deg);
+    }
+    50% {
+        transform: rotateZ(20deg);
+    }
+    75% {
+        transform: rotateZ(-10deg);
+    }
+    90%,
+    100% {
+        transform: none;
+    }
+}
+
+// end scrollEvents
+// browsercompatibility
+.modernizr {
+    // perspctive: 800px;
+    // transform-style: preserve3d;
+}
+
+.browsercompatibility {
+    padding: 20px;
+    font-size: 4rem;
+    background: #3991ae;
+    color: #fff;
+}
+
+.cssanimations .browsercompatibility {
+    transform: rotateX(-90deg);
+    animation: effectbrw 1s .5s cubic-bezier(0, .1, .5, 1.5);
+    animation-fill-mode: forwards;
+}
+
+@keyframes effectbrw {
+    100% {
+        transform: none;
+    }
+}
+
+// end browsercompatibility
+// performance
+.performance {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    .spacer-block {
+        background: rgba(255, 255, 255, .8);
+        border-radius: 1rem;
+        margin: 2rem;
+        padding: 4rem 2rem;
+        text-align: left;
+        width: 25%;
+        transition: all .4s ease-out;
+        * {
+            transition: all .4s ease-out;
+        }
+        p {
+            color: #222;
+            font-size: 2rem;
+        }
+        &:hover {
+            background: rgba(255, 255, 255, 1);
+            padding: 4rem;
+            transform: scale(1.15);
+            p {
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+// end performance
+// transition
+.transition-content {
+    background: #3991ae;
+    color: #fff;
+    cursor: pointer;
+    font-size: 6rem;
+    height: 10rem;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 20rem;
+    .dm {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transition: transform .4s ease-out;
+    }
+    &:hover {
+        .letter1 {
+            transform: translate(-50%, -200%);
+        }
+        .letter2 {
+            transform: translate(-50%, -50%);
+        }
+    }
+    .letter1 {
+        transform: translate(-50%, -50%);
+    }
+    .letter2 {
+        transform: translate(-50%, 200%);
+    }
+}
+
+// end transition
+// spinner
+.spinner {
+    width: 100px;
+    height: 100px;
+    background: #eee;
+    border-radius: 50%;
+    position: relative;
+    margin: 50px;
+    display: inline-block;
+    animation: slowspin 5s linear infinite alternate-reverse;
+    &:after,
+    &:before {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    &.spinner-1 {
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 4px solid transparent;
+            border-top-color: $c_blue;
+            ;
+            border-bottom-color: $c_blue;
+            ;
+            animation: spinny 2s linear infinite;
+        }
+    }
+    &.spinner-2 {
+        animation: spin 4s linear infinite;
+        &:after,
+        &:before {
+            height: 20px;
+            width: 20px;
+            background: $c_orange;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            margin-left: -10px;
+        }
+        &:after {
+            top: auto;
+            bottom: -10px;
+        }
+    }
+    &.spinner-3 {
+        animation: spinTwo 3s linear infinite;
+        &:after,
+        &:before {
+            height: 1px;
+            width: 10px;
+            background-color: $c_orange;
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            margin-left: -1px;
+            border-radius: 50%;
+        }
+        &:before {
+            top: auto;
+            bottom: -5px;
+            animation: bouncy 0.5s ease-in infinite;
+        }
+        &:after {
+            animation: bouncy 1s ease-out infinite;
+        }
+    }
+    &.spinner-4 {
+        background: none;
+        border: 4px solid $c_blue;
+        &:after {
+            width: 4px;
+            height: 80px;
+            background: $c_orange;
+            border-radius: 4px;
+            top: 50%;
+            left: 50%;
+            margin-left: -2px;
+            position: absolute;
+            animation: spin 2s linear infinite;
+            transform-origin: top center;
+        }
+    }
+    &.spinner-5 {
+        &:before,
+        &:after {
+            background-color: $c_blue;
+            animation: pulse 2s linear 2.3s infinite;
+            position: absolute;
+            top: 0;
+        }
+    }
+    &.spinner-6 {
+        height: 0;
+        width: 0;
+        span {
+            display: block;
+            height: 20px;
+            width: 20px;
+            background: $c_orange;
+            border-radius: 50%;
+            position: absolute;
+            top: -20px;
+            &:nth-child(1) {
+                left: -40px;
+                animation: bounce 1s ease-in-out infinite;
+            }
+            &:nth-child(2) {
+                animation: bounce 1s ease-in-out 0.33s infinite;
+            }
+            &:nth-child(3) {
+                animation: bounce 1s ease-in-out 0.66s infinite;
+                left: 40px;
+            }
+        }
+    }
+}
+
+@keyframes bounce {
+    0%,
+    75%,
+    100% {
+        transform: translateY(0px);
+    }
+    25% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+.spinner2 {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background: $c_blue;
+    ;
+    border-radius: 50%;
+    margin: 50px;
+    display: inline-block;
+    &:after,
+    &:before {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    &.spinner-2 {
+        &:after {
+            border: 4px solid transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top-color: #fff;
+            border-bottom-color: #fff;
+            animation: spinnies 2s linear infinite alternate;
+        }
+    }
+}
+
+.move-anima {
+    animation: moveanima 1s linear infinite;
+}
+
+.move-anima2 {
+    height: 70px;
+    animation: updown 1s linear infinite alternate;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.scaleanimation {
+    text-align: center;
+    img {
+        max-width: 200px;
+        animation: scaleAni 2s linear 5s infinite alternate;
+    }
+}
+
+.tri {
+    width: 60px;
+    height: 60px;
+    border-top: 60px solid $c_red;
+    border-bottom: 60px solid $c_light-blue;
+    border-left: 60px solid $c_orange;
+    border-right: 60px solid $c_blue;
+    &.tri-1 {
+        border-top-width: 0px;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+    &.tri-2 {
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+    }
+    &.tri-3 {
+        border-bottom-width: 0;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+}
+
+.cir {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    &.cir-1 {
+        border: 60px solid;
+        border-color: $c_blue transparent $c_blue $c_blue;
+    }
+    &.cir-2 {
+        border: groove 60px $c_blue;
+    }
+    &.cir-3 {
+        border: 60px groove $c_orange;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-radius: 0%;
+    }
+    &.cir-4 {}
+}
+
+@keyframes spinTime {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes moveanima {
+    0% {
+        transform: translate(-20px, -10px) scale(0.6);
+    }
+    100% {
+        transform: translate(20px, 10px) scale(0.8);
+    }
+}
+
+@keyframes bouncy {
+    0%,
+    100% {
+        transform: translateY(-1px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes scaleAni {
+    0% {
+        transform: scale(0) rotateY(0deg);
+        opacity: 0.2;
+    }
+    30% {
+        transform: scale(0.9) rotateY(180deg);
+        opacity: 1;
+    }
+    60%,
+    100% {
+        transform: scale(1) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes spinny {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(360deg) scale(1.2)
+    }
+    100% {
+        transform: rotate(720deg) scale(1);
+    }
+}
+
+@keyframes spinnies {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+    30% {
+        transform: rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: rotate(180deg);
+        opacity: .5;
+    }
+    80%,
+    100% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes slowspin {
+    from {
+        transform: scale(1);
+        background-color: $c_blue; // margin-left: 0
+    }
+    to {
+        transform: scale(1);
+        background-color: #eee; // margin-left: 50px;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinTwo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinText {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+// end spinner
+// walking animation
+#road {
+    background: url(../img/twitter-sprite.png) 0 0 repeat-x #00ade7;
+    animation: walk 1s steps(8) infinite;
+    width: 100%;
+    height: 140px;
+}
+
+#runner {
+    background: $bg_runner;
+    width: 281px;
+    height: 346px;
+    animation: walk 1s steps(8) infinite, forward 10s linear infinite;
+}
+
+@keyframes walk {
+    0% {
+        background-position: 2252px;
+    }
+    100% {
+        background-position: 0;
+    }
+}
+
+@keyframes forward {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(800px);
+    }
+}
+
+// end walking animation
+// rating
+#ratings {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    .rating {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(180deg);
+        display: flex;
+        input {
+            display: none;
+        }
+        label {
+            display: block;
+            cursor: pointer;
+
+            width: 50px;
+            margin-left: 10px;
+            margin-right: 10px;
+            transform: rotate(110deg);
+            &::before,
+            &::after {
+                content: '\f005';
+                font-family: fontAwesome;
+                position: relative;
+                display: block;
+                font-size: 50px;
+            }
+            &::after {
+                position: absolute;
+                top: 0;
+                color: $c_blue;
+                opacity: 0;
+                transition: .5s;
+                text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+            }
+        }
+        label:hover:after,
+        label:hover~label:after,
+        input:checked~label:after {
+            opacity: 1;
+        }
+    }
+}
+
+// end rating
+// pricing table
+.tb-price {
+    float: left;
+    width: 33.3%;
+    padding: 8px;
+    box-sizing: border-box;
+    .price-box {
+        background: #fff;
+        color: #c_grey;
+        list-style: none;
+        border: 1px solid $c_grey;
+        margin: 0;
+        padding: 0;
+        transition: 0.3s;
+        &.best {
+            box-shadow: 0 4px 15px 0 #ccc;
+        }
+        &:hover {
+            @extend .best;
+        }
+        .header {
+            background: #111;
+            color: #fff;
+            font-size: 25px;
+            &.header-green {}
+        }
+        li {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+        }
+        .emph {
+            background: #f4f4f4;
+            font-size: 20px;
+        }
+        .button {
+            background: #4caf50;
+            border: none;
+            color: #fff;
+            text-align: center;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+    }
+}
+
+@media (max-width:767px) {
+    .tb-price {
+        width: 100%;
+    }
+}
+
+// end pricing table
